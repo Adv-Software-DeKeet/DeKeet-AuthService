@@ -26,6 +26,23 @@ public class FBUserService {
         System.out.println("Successfully created new user: " + userRecord.getUid());
     }
 
+    public void UpdateUser(User updatedUser) throws FirebaseAuthException {
+        UserRecord.UpdateRequest request = new UserRecord.UpdateRequest(updatedUser.getUid())
+                .setEmail(updatedUser.getEmail())
+                .setDisplayName(updatedUser.getName());
+
+        UserRecord userRecord = FirebaseAuth.getInstance().updateUser(request);
+
+        SetRole(updatedUser);
+
+        System.out.println("Successfully updated user: " + userRecord.getUid());
+    }
+
+    public void DeleteUser(String uid) throws FirebaseAuthException {
+        FirebaseAuth.getInstance().deleteUser(uid);
+        System.out.println("Successfully deleted user.");
+    }
+
     public void SetRole(User user) throws FirebaseAuthException {
         Map<String, Object> claims = new HashMap<>();
         claims.put(user.getRole(), true);
