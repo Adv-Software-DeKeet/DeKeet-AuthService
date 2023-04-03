@@ -23,4 +23,24 @@ public class Listener {
             log.info(e.getMessage());
         }
     }
+
+    @RabbitListener(queues = {"q.userUpdate"})
+    public void onUserUpdate(User user) {
+        log.info("User update Event Received: {}", user);
+        try {
+            svc.UpdateUser(user);
+        } catch (FirebaseAuthException e) {
+            log.info(e.getMessage());
+        }
+    }
+
+    @RabbitListener(queues = {"q.userDelete"})
+    public void onUserDelete(String uid) {
+        log.info("User delete Event Received: {}", uid);
+        try {
+            svc.DeleteUser(uid);
+        } catch (FirebaseAuthException e) {
+            log.info(e.getMessage());
+        }
+    }
 }

@@ -25,5 +25,5 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        repository: jovisimons/${{ github.event.repository.name }}
+        repository: jovisimons/dekeet-authservice
         tags: latest

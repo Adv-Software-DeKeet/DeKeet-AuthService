@@ -32,9 +32,9 @@ public class AuthController {
     public ResponseEntity<String> CreateUser() {
         try {
             userSvc.CreateUser();
-            return new ResponseEntity<String>("User craeted", HttpStatus.CREATED);
+            return new ResponseEntity<>("User craeted", HttpStatus.CREATED);
         } catch (FirebaseAuthException e) {
-            return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 }
