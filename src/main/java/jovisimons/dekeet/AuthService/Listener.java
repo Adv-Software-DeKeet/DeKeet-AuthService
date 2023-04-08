@@ -14,7 +14,7 @@ public class Listener {
     @Autowired
     FBUserService svc;
 
-    @RabbitListener(queues = {"q.auth"})
+    @RabbitListener(queues = {"q.userRegister"})
     public void onUserRegistration(User user) {
         log.info("User Registration Event Received: {}", user);
         try {
