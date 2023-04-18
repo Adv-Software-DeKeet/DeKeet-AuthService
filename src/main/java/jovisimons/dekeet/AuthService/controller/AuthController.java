@@ -26,14 +26,4 @@ public class AuthController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
         }
     }
-
-    @GetMapping()
-    public ResponseEntity<String> CreateUser() {
-        try {
-            userSvc.CreateUser();
-            return new ResponseEntity<>("User craeted", HttpStatus.CREATED);
-        } catch (FirebaseAuthException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
 }

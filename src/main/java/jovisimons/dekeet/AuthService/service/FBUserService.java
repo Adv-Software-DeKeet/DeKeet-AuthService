@@ -12,13 +12,13 @@ import java.util.Map;
 @Service
 public class FBUserService {
 
-    public void CreateUser() throws FirebaseAuthException {
+    public void CreateUser(User user) throws FirebaseAuthException {
         UserRecord.CreateRequest request = new UserRecord.CreateRequest()
-                .setEmail("test@gmail.com")
+                .setUid(user.getUid())
+                .setEmail(user.getEmail())
                 .setEmailVerified(false)
-                .setPassword("colablikje123")
-                .setPhoneNumber("+11234567890")
-                .setDisplayName("John Doe")
+                .setPassword(user.getPassword())
+                .setDisplayName(user.getName())
                 .setPhotoUrl("http://www.example.com/12345678/photo.png")
                 .setDisabled(false);
 
