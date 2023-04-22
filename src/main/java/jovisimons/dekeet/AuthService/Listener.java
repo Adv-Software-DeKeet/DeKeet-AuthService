@@ -18,6 +18,7 @@ public class Listener {
     public void onUserRegistration(User user) {
         log.info("User Registration Event Received: {}", user);
         try {
+            svc.CreateUser(user);
             svc.SetRole(user);
         } catch (FirebaseAuthException e) {
             log.info(e.getMessage());

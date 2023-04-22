@@ -19,11 +19,12 @@ public class FirebaseConfig{
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         InputStream is = classloader.getResourceAsStream("de-keet-firebase.json");
 
-        FirebaseOptions options = new FirebaseOptions.Builder()
-                .setCredentials(GoogleCredentials.fromStream(is))
-                .build();
+      //  FirebaseOptions options = new FirebaseOptions.Builder()
+        //        .setCredentials(GoogleCredentials.fromStream(is))
+       //         .build();
 
-        return  FirebaseApp.initializeApp(options);
+      //  return  FirebaseApp.initializeApp(options);
+        return  FirebaseApp.initializeApp();
     }
 
 }

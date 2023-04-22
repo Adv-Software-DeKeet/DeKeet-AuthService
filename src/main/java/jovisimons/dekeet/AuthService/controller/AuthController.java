@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/auth")
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class AuthController {
@@ -25,16 +24,6 @@ public class AuthController {
             return new ResponseEntity<>(uid, HttpStatus.OK);
         } catch (FirebaseAuthException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
-        }
-    }
-
-    @GetMapping()
-    public ResponseEntity<String> CreateUser() {
-        try {
-            userSvc.CreateUser();
-            return new ResponseEntity<>("User craeted", HttpStatus.CREATED);
-        } catch (FirebaseAuthException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 }
